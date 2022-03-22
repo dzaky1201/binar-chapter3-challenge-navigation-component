@@ -1,0 +1,44 @@
+package com.dzakyhdr.challenge3.ui
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.dzakyhdr.challenge3.R
+import com.dzakyhdr.challenge3.data.Identity
+import com.dzakyhdr.challenge3.databinding.FragmentSecondBinding
+
+
+class SecondFragment : Fragment() {
+
+    private var _binding: FragmentSecondBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentSecondBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        binding.button.setOnClickListener {
+            val name = binding.edtName.text.toString()
+            val identity = Identity(name)
+            val action = SecondFragmentDirections.actionSecondFragmentToThridFragment(identity)
+            findNavController().navigate(action)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+}
