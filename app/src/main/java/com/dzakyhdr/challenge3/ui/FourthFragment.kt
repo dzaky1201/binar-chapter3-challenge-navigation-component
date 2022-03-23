@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.dzakyhdr.challenge3.R
 import com.dzakyhdr.challenge3.data.Identity
 import com.dzakyhdr.challenge3.databinding.FragmentFourthBinding
 
@@ -35,7 +34,7 @@ class FourthFragment : Fragment() {
             edtName.setText(args.name)
             button.setOnClickListener {
                 val name = edtName.text.toString()
-                val usia = edtUsia.text.toString().toInt()
+                val usia = edtUsia.text.toString()
                 val alamat = edtAlamat.text.toString()
                 val pekerjaan = edtPekerjaan.text.toString()
 
@@ -43,7 +42,7 @@ class FourthFragment : Fragment() {
                     Toast.makeText(requireContext(), "Lengkapi Data Anda !", Toast.LENGTH_SHORT)
                         .show()
                 } else {
-                    val identity = Identity(name, usia, alamat, pekerjaan)
+                    val identity = Identity(name, usia.toInt(), alamat, pekerjaan)
                     findNavController().navigate(
                         FourthFragmentDirections.actionFourthFragmentToThridFragment(
                             identity

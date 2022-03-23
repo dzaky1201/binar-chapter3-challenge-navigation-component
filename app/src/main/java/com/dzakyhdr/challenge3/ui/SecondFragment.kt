@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.dzakyhdr.challenge3.R
 import com.dzakyhdr.challenge3.data.Identity
@@ -30,9 +31,15 @@ class SecondFragment : Fragment() {
 
         binding.button.setOnClickListener {
             val name = binding.edtName.text.toString()
-            val identity = Identity(name)
-            val action = SecondFragmentDirections.actionSecondFragmentToThridFragment(identity)
-            findNavController().navigate(action)
+
+            if (binding.edtName.text.isNullOrEmpty()){
+                Toast.makeText(requireContext(), "Masukan Nama Anda !", Toast.LENGTH_SHORT).show()
+            } else{
+                val identity = Identity(name)
+                val action = SecondFragmentDirections.actionSecondFragmentToThridFragment(identity)
+                findNavController().navigate(action)
+            }
+
         }
     }
 
