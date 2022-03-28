@@ -29,7 +29,7 @@ class ThridFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val name = args.identity?.name
+        val name = args.identity?.name // sebuah nama yang dikirimkan oleh second fragment
         val usia = args.identity?.usia
         val alamat = args.identity?.alamat
         val pekerjaan = args.identity?.pekerjaan
@@ -60,7 +60,7 @@ class ThridFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding
+        _binding = null
     }
 
 }
